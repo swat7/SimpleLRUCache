@@ -61,9 +61,9 @@ public class LRUCache<K,V> {
 	public V get(K key) {
 		if(!map.containsKey(key)) {
 			//Fetch the value from the data source or a loader
-			V value = loader.compute(key);			
-			evictEntryNode();
-			return createNewEntryNode(key, value).getValue();
+			//V value = loader.compute(key);			
+			//evictEntryNode();
+			//return createNewEntryNode(key, value).getValue();
 		} else {
 			//Change the position
 			EntryValue<K,V> entryValue = map.get(key);
@@ -72,6 +72,7 @@ public class LRUCache<K,V> {
 			queue.add(oldNode);
 			return entryValue.getValue();
 		}
+		return null;
 	}
 	
 	public void set(K key, V val) {
